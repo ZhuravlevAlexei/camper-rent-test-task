@@ -1,0 +1,11 @@
+:root {
+  --button-color: #e44848;
+  --main-color: #101828;
+  --inputs-color: #f7f7f7;
+  --block-features-color: #f2f4f7;
+  --rating-color: #ffc531;
+  --text-color: #475467;
+  --white-color: #ffffff;
+
+  --primary-font-family: "Inter", sans-serif;
+}

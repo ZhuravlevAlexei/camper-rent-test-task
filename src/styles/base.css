@@ -1,0 +1,17 @@
+:root {
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--text-color);
+  color-scheme: light dark;
+  background-color: var(--white-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root::-webkit-scrollbar {
+  display: none;
+}
