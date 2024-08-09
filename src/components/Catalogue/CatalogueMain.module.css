@@ -1,0 +1,16 @@
+.catalogueColumns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+}
+
+.catLeft {
+  border: 1px solid black;
+}
+
+.catRight {
+  width: 888px;
+  border: 1px solid black;
+}

@@ -1,5 +1,7 @@
+import CatalogueMain from "../components/Catalogue/CatalogueMain.jsx";
+
 const CataloguePage = () => {
-  return <div>CataloguePage</div>;
+  return <CatalogueMain />;
 };
 
 export default CataloguePage;
