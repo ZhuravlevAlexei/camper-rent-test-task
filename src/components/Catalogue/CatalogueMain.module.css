@@ -1,16 +1,20 @@
 .catalogueColumns {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   gap: 64px;
 }
 
 .catLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   border: 1px solid black;
 }
 
 .catRight {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   width: 888px;
   border: 1px solid black;
 }
