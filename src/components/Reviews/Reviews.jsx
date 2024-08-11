@@ -36,7 +36,6 @@ const Reviews = ({ camper }) => {
                         <Icon
                           key={nanoid()}
                           iconId="star"
-                          stroke={true}
                           className={css.ratingIcon}
                         />
                       );

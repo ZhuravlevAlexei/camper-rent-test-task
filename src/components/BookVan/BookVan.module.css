@@ -77,5 +77,6 @@
 }
 
 .yupAlert {
-  color: var(--error-red-color);
+  font-weight: 600;
+  color: var(--button-color);
 }

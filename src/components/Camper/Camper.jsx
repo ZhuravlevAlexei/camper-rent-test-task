@@ -25,15 +25,19 @@ const Camper = ({ camper }) => {
   }
 
   const handleShowMore = () => {
-    // console.log("show more");
     openModal(<CamperDetailed camper={camper} />);
   };
 
   const getFavIconId = (id) => {
-    return favItems.includes(id) ? "heart-red" : "heart-empty";
+    const index = favItems.findIndex((camper) => camper._id === id);
+    if (index >= 0) {
+      return "heart-red";
+    } else {
+      return "heart-empty";
+    }
   };
   const handleIconClick = () => {
-    dispatch(saveFavorite(camper._id));
+    dispatch(saveFavorite(camper));
   };
 
   return (

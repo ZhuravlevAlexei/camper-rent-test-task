@@ -88,3 +88,27 @@
 .blockThumb {
   cursor: pointer;
 }
+
+.loadMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonLoadMore {
+  margin-top: 18px;
+  height: 56px;
+  width: 148px;
+  padding: 16px 32px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--main-black-color);
+  border-radius: 200px;
+  background-color: var(--white-color);
+  border: 1px solid rgba(16, 24, 40, 0.2);
+}
+
+.buttonLoadMore:hover {
+  border-color: var(--button-color);
+}

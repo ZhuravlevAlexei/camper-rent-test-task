@@ -46,6 +46,6 @@
   width: 16px;
   height: 16px;
   margin-right: 4px;
-  fill: none;
-  stroke: var(--main-black-color);
+  fill: var(--block-features-color);
+  stroke: var(--block-features-color);
 }

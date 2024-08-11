@@ -1,26 +1,43 @@
 import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import Button from "../../shared/components/Button/Button.jsx";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import css from "./BookVan.module.css";
+
+const yupSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "Must be at least 3 characters")
+    .max(40, "Must be max 40 characters or less")
+    .matches(
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      "Name may contain only letters, apostrophe, dash and spaces."
+    ),
+  email: yup
+    .string()
+    .max(40, "Must be max 40 characters or less")
+    .email()
+    .required("Email is required"),
+  selectedDate: yup.date().required("Date is required"),
+});
 
 const BookVan = () => {
   const {
     register,
     control,
     handleSubmit,
-    // setValue,
-    // watch,
-    // clearErrors,
+    reset,
     formState: { errors },
   } = useForm({
-    // resolver: yupResolver(userSettingsFormSchema),
+    resolver: yupResolver(yupSchema),
     mode: "onSubmit",
-    //   defaultValues = {},
   });
 
   const onSubmit = (FormData) => {
     console.log(FormData);
+    reset();
   };
 
   return (
@@ -29,7 +46,11 @@ const BookVan = () => {
       <div className={css.bookingText}>
         Stay connected! We are always ready to help you.
       </div>
-      <form className={css.bookingForm} onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className={css.bookingForm}
+        noValidate
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className={css.formInputs}>
           <input
             className={css.formInput}
@@ -70,6 +91,9 @@ const BookVan = () => {
               />
             )}
           />
+          {errors.selectedDate && (
+            <span className={css.yupAlert}>{errors.selectedDate.message}</span>
+          )}
 
           <textarea
             className={css.formMultiInput}

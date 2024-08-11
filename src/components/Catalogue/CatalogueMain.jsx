@@ -1,22 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import Container from "../../shared/components/Container/Container.jsx";
-import { selectCampers, selectFilters } from "../../redux/campers/selectors.js";
+import {
+  selectCampers,
+  selectFilters,
+  selectPage,
+  selectTotal,
+} from "../../redux/campers/selectors.js";
 import css from "./CatalogueMain.module.css";
 import Camper from "../Camper/Camper.jsx";
 import Button from "../../shared/components/Button/Button.jsx";
-// import Icon from "../../shared/components/Icon/Icon.jsx";
 import { icon } from "../../icons/index.js";
 import InfoBlock from "../../shared/components/InfoBlock/InfoBlock.jsx";
 import clsx from "clsx";
-import { setFilters } from "../../redux/campers/slice.js";
+import { setFilters, setPage } from "../../redux/campers/slice.js";
 import { correctIconStroke } from "../../service/serviceFuncs.js";
 import { useState } from "react";
 
 const CatalogueMain = () => {
   const dispatch = useDispatch();
   const [chosenLocation, setChosenLocation] = useState("");
-  const campers = useSelector(selectCampers);
+  const limit = 4;
+  const items = useSelector(selectCampers);
+  const page = useSelector(selectPage);
+  const total = useSelector(selectTotal);
+
+  const campers = items.slice(0, Math.min(limit * page, total));
   const filters = useSelector(selectFilters);
   const locationOptions = [];
 
@@ -89,6 +98,13 @@ const CatalogueMain = () => {
     console.log(chosenLocation);
   };
 
+  const handleLoadMore = () => {
+    if (page * limit >= total) {
+      return;
+    }
+    dispatch(setPage(page + 1));
+  };
+
   const handleCheckClick = (type, key) => {
     dispatch(setFilters({ type, key }));
   };
@@ -127,7 +143,6 @@ const CatalogueMain = () => {
                         <InfoBlock
                           text={eq.name}
                           iconId={eq.iconId}
-                          // stroke={true}
                           stroke={correctIconStroke(eq.iconId)}
                           className={clsx(
                             css.equipmentBlock,
@@ -177,6 +192,11 @@ const CatalogueMain = () => {
             campers.map((camper) => {
               return <Camper key={camper._id} camper={camper} />;
             })}
+          <div className={css.loadMore}>
+            <Button className={css.buttonLoadMore} onClick={handleLoadMore}>
+              Load more
+            </Button>
+          </div>
         </div>
       </div>
     </Container>

@@ -1,5 +1,7 @@
+import HomePageInvitation from "../components/HomePageInvitation/HomePageInvitation.jsx";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <HomePageInvitation />;
 };
 
 export default HomePage;
