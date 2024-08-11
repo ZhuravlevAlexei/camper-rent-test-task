@@ -1,3 +1,14 @@
+export const capitalizeFirst = (text) =>
+  text.charAt(0).toUpperCase() + text.slice(1);
+
+export const ratingText = (camper) => {
+  if (camper.reviews.length > 0) {
+    return `${camper.rating}(${camper.reviews.length} reviews)`;
+  } else {
+    return `${camper.rating}`;
+  }
+};
+
 export const correctIconStroke = (iconId) => {
   const someIcons = ["toilet-paper-line", "gas", "ac"];
   if (someIcons.includes(iconId)) {

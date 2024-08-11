@@ -11,9 +11,11 @@ import InfoBlock from "../../shared/components/InfoBlock/InfoBlock.jsx";
 import clsx from "clsx";
 import { setFilters } from "../../redux/campers/slice.js";
 import { correctIconStroke } from "../../service/serviceFuncs.js";
+import { useState } from "react";
 
 const CatalogueMain = () => {
   const dispatch = useDispatch();
+  const [chosenLocation, setChosenLocation] = useState("");
   const campers = useSelector(selectCampers);
   const filters = useSelector(selectFilters);
   const locationOptions = [];
@@ -84,11 +86,15 @@ const CatalogueMain = () => {
 
   const handleSearch = () => {
     console.log("search");
+    console.log(chosenLocation);
   };
 
   const handleCheckClick = (type, key) => {
-    console.log("check: ", type, key);
     dispatch(setFilters({ type, key }));
+  };
+
+  const handleLocationChange = (option) => {
+    setChosenLocation(option.value);
   };
 
   return (
@@ -102,6 +108,7 @@ const CatalogueMain = () => {
               options={locationOptions}
               components={{ SingleValue, Option }}
               placeholder="Choose location"
+              onChange={handleLocationChange}
             />
           </div>
           <div>

@@ -8,4 +8,8 @@
   --white-color: #ffffff;
 
   --primary-font-family: "Inter", sans-serif;
+
+  --backdrop-color: #2f2f2f99;
+  --transition-duration: 0.7s;
+  --transition-timing-function: ease-in-out;
 }

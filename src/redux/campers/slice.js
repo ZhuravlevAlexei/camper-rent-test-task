@@ -37,27 +37,15 @@ const campersSlice = createSlice({
       }
     },
     setFilters(state, action) {
-      console.log("action: ", action);
       const currentFilters = { ...state.filters };
-      if (action.payload.type === "equipment") {
-        const index = currentFilters.equipment.findIndex(
-          (eq) => eq.key === action.payload.key
-        );
-        if (index >= 0) {
-          currentFilters.equipment[index].checked =
-            !currentFilters.equipment[index].checked;
-        }
+      const index = currentFilters[action.payload.type].findIndex(
+        (eq) => eq.key === action.payload.key
+      );
+      if (index >= 0) {
+        currentFilters[action.payload.type][index].checked =
+          !currentFilters[action.payload.type][index].checked;
       }
 
-      if (action.payload.type === "vehicleType") {
-        const index = currentFilters.vehicleType.findIndex(
-          (eq) => eq.key === action.payload.key
-        );
-        if (index >= 0) {
-          currentFilters.vehicleType[index].checked =
-            !currentFilters.vehicleType[index].checked;
-        }
-      }
       state.filters = currentFilters;
     },
   },

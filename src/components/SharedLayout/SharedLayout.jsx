@@ -1,14 +1,28 @@
 import { Suspense } from "react";
-import { Toaster } from "react-hot-toast";
 import Navigation from "../Navigation/Navigation.jsx";
+import Loader from "../../shared/components/Loader/Loader.jsx";
 
 const SharedLayout = ({ children }) => {
   return (
     <>
-      <Toaster position="top-right" toastOptions={{ duration: 2500 }} />
       <Navigation />
       <main>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense
+          fallback={
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100vh",
+              }}
+            >
+              <Loader />
+            </div>
+          }
+        >
+          {children}
+        </Suspense>
       </main>
     </>
   );

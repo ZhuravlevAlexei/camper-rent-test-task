@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import Icon from "../../shared/components/Icon/Icon.jsx";
-import css from "./Camper.module.css";
 import { saveFavorite } from "../../redux/campers/slice.js";
 import { selectFavItems } from "../../redux/campers/selectors.js";
+import CamperDetailed from "../CamperDetailed/CamperDetailed.jsx";
 import InfoBlock from "../../shared/components/InfoBlock/InfoBlock.jsx";
 import Button from "../../shared/components/Button/Button.jsx";
+import { useModal } from "../../context/index.js";
+import css from "./Camper.module.css";
+import { capitalizeFirst, ratingText } from "../../service/serviceFuncs.js";
 
 const Camper = ({ camper }) => {
+  const { openModal } = useModal();
   const dispatch = useDispatch();
   const favItems = useSelector(selectFavItems);
   const { _id, name, gallery, price } = camper;
@@ -21,17 +25,8 @@ const Camper = ({ camper }) => {
   }
 
   const handleShowMore = () => {
-    console.log("show more");
-  };
-  const capitalizeFirst = (text) =>
-    text.charAt(0).toUpperCase() + text.slice(1);
-
-  const ratingText = (camper) => {
-    if (camper.reviews.length > 0) {
-      return `${camper.rating}(${camper.reviews.length} reviews)`;
-    } else {
-      return `${camper.rating}`;
-    }
+    // console.log("show more");
+    openModal(<CamperDetailed camper={camper} />);
   };
 
   const getFavIconId = (id) => {
