@@ -92,7 +92,7 @@ const Camper = ({ camper }) => {
           )}
           {camper.details.beds && (
             <InfoBlock
-              iconId="bad"
+              iconId="bed"
               text={`${camper.details.beds} beds`}
               stroke={true}
             />
@@ -101,9 +101,7 @@ const Camper = ({ camper }) => {
             <InfoBlock iconId="ac" text={`AC`} />
           )}
         </div>
-        <Button className={css.button} onClick={handleShowMore}>
-          Show more
-        </Button>
+        <Button onClick={handleShowMore}>Show more</Button>
       </div>
     </div>
   );

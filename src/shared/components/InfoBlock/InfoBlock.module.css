@@ -20,3 +20,15 @@
   width: 20px;
   height: 20px;
 }
+
+.infoBlockIconStroke32 {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: var(--main-black-color);
+}
+
+.infoBlockIcon32 {
+  width: 32px;
+  height: 32px;
+}

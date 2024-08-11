@@ -36,6 +36,30 @@ const campersSlice = createSlice({
         state.favItems.push(camperId);
       }
     },
+    setFilters(state, action) {
+      console.log("action: ", action);
+      const currentFilters = { ...state.filters };
+      if (action.payload.type === "equipment") {
+        const index = currentFilters.equipment.findIndex(
+          (eq) => eq.key === action.payload.key
+        );
+        if (index >= 0) {
+          currentFilters.equipment[index].checked =
+            !currentFilters.equipment[index].checked;
+        }
+      }
+
+      if (action.payload.type === "vehicleType") {
+        const index = currentFilters.vehicleType.findIndex(
+          (eq) => eq.key === action.payload.key
+        );
+        if (index >= 0) {
+          currentFilters.vehicleType[index].checked =
+            !currentFilters.vehicleType[index].checked;
+        }
+      }
+      state.filters = currentFilters;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -51,4 +75,4 @@ const campersSlice = createSlice({
 });
 
 export default campersSlice.reducer;
-export const { saveFavorite } = campersSlice.actions;
+export const { saveFavorite, setFilters } = campersSlice.actions;

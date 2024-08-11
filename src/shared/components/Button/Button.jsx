@@ -1,18 +1,23 @@
-import clsx from 'clsx';
-import css from './Button.module.css';
+import css from "./Button.module.css";
 
 const Button = ({
   children,
-  type = 'button',
+  type = "button",
   className,
   onClick,
   ...props
 }) => {
+  const getClassName = (className) => {
+    if (className) {
+      return className;
+    }
+    return css.button;
+  };
   return (
     <button
       type={type}
       onClick={onClick}
-      className={clsx(css.button, { [className]: className })}
+      className={getClassName(className)}
       {...props}
     >
       {children}
