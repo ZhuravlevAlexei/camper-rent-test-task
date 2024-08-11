@@ -11,7 +11,7 @@ const FavoritesPage = () => {
   return (
     <Container>
       <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-        {campers.length &&
+        {campers &&
           campers.map((camper) => {
             return <Camper key={camper._id} camper={camper} />;
           })}

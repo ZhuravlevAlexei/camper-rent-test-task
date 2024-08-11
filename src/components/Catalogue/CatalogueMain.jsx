@@ -188,7 +188,7 @@ const CatalogueMain = () => {
           </Button>
         </div>
         <div className={css.catRight}>
-          {campers.length &&
+          {campers &&
             campers.map((camper) => {
               return <Camper key={camper._id} camper={camper} />;
             })}
