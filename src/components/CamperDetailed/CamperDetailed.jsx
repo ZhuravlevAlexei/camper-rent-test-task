@@ -2,10 +2,10 @@ import clsx from "clsx";
 import { useState } from "react";
 import { ratingText } from "../../service/serviceFuncs.js";
 import Icon from "../../shared/components/Icon/Icon.jsx";
-import css from "./CamperDetailed.module.css";
 import Features from "../Features/Features.jsx";
 import Reviews from "../Reviews/Reviews.jsx";
 import BookVan from "../BookVan/BookVan.jsx";
+import css from "./CamperDetailed.module.css";
 
 const CamperDetailed = ({ camper }) => {
   const [activeTab, setActiveTab] = useState("features");

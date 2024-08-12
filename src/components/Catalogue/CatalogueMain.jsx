@@ -53,46 +53,6 @@ const CatalogueMain = () => {
     });
   });
 
-  const SingleValue = ({ data }) => (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: "#f7f7f7",
-      }}
-    >
-      <svg
-        alt="icon"
-        role="img"
-        style={{
-          width: 18,
-          height: 20,
-          fill: "none",
-          stroke: "black",
-          marginRight: 8,
-        }}
-      >
-        <use xlinkHref={`${icon}#${"map-pin-active"}`} />
-      </svg>
-      {data.label.props.children[1]}
-    </div>
-  );
-  const Option = (props) => {
-    return (
-      <div
-        {...props.innerProps}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          cursor: "pointer",
-          backgroundColor: "#f7f7f7",
-        }}
-      >
-        {props.data.label}
-      </div>
-    );
-  };
-
   const handleSearch = () => {
     console.log("search");
     console.log(chosenLocation);
@@ -122,7 +82,6 @@ const CatalogueMain = () => {
             <Select
               className={css.locSelect}
               options={locationOptions}
-              components={{ SingleValue, Option }}
               placeholder="Choose location"
               onChange={handleLocationChange}
             />
