@@ -39,15 +39,35 @@
   border-radius: 10px;
   background-color: var(--block-features-color);
 }
-.calendarInput::after {
-  content: "\1F4C5";
-  font-size: 18px;
+
+.calendarIcon {
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;
-  color: #4a90e2;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--main-black-color);
+}
+
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--main-black-color);
+  background-color: var(--white-color);
+}
+
+.customDatepickerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 24px;
+  border: none;
+  background-color: var(--white-color);
 }
 
 .formInputs {

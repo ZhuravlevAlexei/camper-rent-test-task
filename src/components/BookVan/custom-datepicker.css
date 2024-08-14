@@ -1,0 +1,106 @@
+/* Основной контейнер календаря */
+.react-datepicker {
+  /* background-color: #f0f0f0; */
+  /* border: 2px solid #4a90e2; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  padding: 16px;
+  background-color: var(--white-color);
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 12px;
+}
+
+/* Заголовок календаря */
+.react-datepicker__header {
+  /* background-color: #4a90e2;
+  border-bottom: 2px solid #357abd;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px; */
+
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--main-black-color);
+  border: none;
+  background-color: var(--white-color);
+}
+
+/* Заголовок дней недели */
+.react-datepicker__day-names {
+  /* display: flex;
+  justify-content: space-between;
+  color: #357abd; */
+
+  font-size: 12px;
+  line-height: 120%;
+  font-weight: 600;
+  color: var(--text-color);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Стили для дней */
+.react-datepicker__day {
+  /* color: #333;
+  font-size: 14px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 2px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease; */
+
+  font-size: 14px;
+  width: 41px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* Выбранный день */
+.react-datepicker__day--selected {
+  background-color: #4a90e2;
+  color: white;
+}
+
+/* Текущий день */
+/* .react-datepicker__day--today {
+  background-color: #357abd;
+  color: white;
+} */
+
+/* Неактивные дни */
+/* .react-datepicker__day--disabled {
+  color: #ccc;
+  cursor: not-allowed;
+} */
+
+/* Наведение на день */
+/* .react-datepicker__day:hover {
+  background-color: #e0e0e0;
+  color: #333;
+} */
+
+/* Навигационные кнопки (месяц вперед/назад) */
+.react-datepicker__navigation {
+  top: 10px;
+  /* line-height: 1.7rem; */
+  /* border: 0.45rem solid transparent; */
+}
+
+.react-datepicker__navigation--previous {
+  /* border-right-color: #fff; */
+  /* margin-left: 10px; */
+
+  border-right-color: var(--main-black-color);
+}
+
+.react-datepicker__navigation--next {
+  /* border-left-color: #fff; */
+  /* margin-right: 10px; */
+
+  border-left-color: var(--main-black-color);
+}

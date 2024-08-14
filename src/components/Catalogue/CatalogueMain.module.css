@@ -24,14 +24,14 @@
   margin-bottom: 8px;
 }
 
-.locSelect {
+/* .locSelect {
   width: 360px;
-  /* height: 56px; */
-  /* padding: 18px; */
+  height: 36px;
+  padding: 0;
   border-radius: 10px;
   background-color: var(--inputs-color);
   border: none;
-}
+} */
 
 .buttonSearch {
   height: 56px;

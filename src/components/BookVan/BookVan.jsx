@@ -3,8 +3,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Button from "../../shared/components/Button/Button.jsx";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css"; // data picker default styles
+import "./custom-datepicker.css"; // data picker custom styles
 import css from "./BookVan.module.css";
+import Icon from "../../shared/components/Icon/Icon.jsx";
 
 const yupSchema = yup.object().shape({
   name: yup
@@ -38,6 +40,49 @@ const BookVan = () => {
   const onSubmit = (FormData) => {
     console.log(FormData);
     reset();
+  };
+
+  const DateInput = ({ value, onClick }) => (
+    <div className="date-input-container" onClick={onClick}>
+      <input
+        // readOnly
+        className={css.calendarInput}
+        placeholder="Booking date"
+        value={value}
+      />
+      <Icon iconId="calendar" className={css.calendarIcon} />
+    </div>
+  );
+
+  const CustomHeader = ({
+    date,
+    // changeMonth,
+    decreaseMonth,
+    increaseMonth,
+  }) => {
+    return (
+      <div className={css.customDatepickerHeader}>
+        <button
+          type="button"
+          // className="custom-datepicker-button custom-datepicker-button--previous"
+          onClick={decreaseMonth}
+        >
+          <Icon iconId="arrow-left" className={css.arrowIcon} />
+        </button>
+        <span
+        // className="custom-datepicker-month-year"
+        >
+          {date.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+        </span>
+        <button
+          type="button"
+          // className="custom-datepicker-button custom-datepicker-button--next"
+          onClick={increaseMonth}
+        >
+          <Icon iconId="arrow-right" className={css.arrowIcon} />
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -83,8 +128,10 @@ const BookVan = () => {
             defaultValue={null}
             render={({ field }) => (
               <DatePicker
-                className={css.calendarInput}
-                placeholderText="Выберите дату"
+                // className={css.calendarInput}
+                // placeholderText="Booking date"
+                renderCustomHeader={CustomHeader}
+                customInput={<DateInput />}
                 selected={field.value}
                 onChange={(date) => field.onChange(date)}
                 dateFormat="dd/MM/yyyy"
