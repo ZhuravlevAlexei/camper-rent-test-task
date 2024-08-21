@@ -18,6 +18,7 @@
 }
 
 .bookingForm {
+  position: relative;
   margin-top: 24px;
 }
 
@@ -25,6 +26,7 @@
   width: 400px;
   height: 56px;
   padding: 18px;
+  margin-bottom: 14px;
   border: none;
   border-radius: 10px;
   background-color: var(--block-features-color);
@@ -35,15 +37,28 @@
   width: 400px;
   height: 56px;
   padding: 18px 24px 18px 18px;
+  margin-bottom: 14px;
   border: none;
   border-radius: 10px;
   background-color: var(--block-features-color);
 }
 
+.iconClearSelectedDate {
+  position: absolute;
+  right: 30px;
+  top: 170px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  stroke: var(--main-black-color);
+  cursor: pointer;
+}
+
 .calendarIcon {
   position: absolute;
   right: 10px;
-  top: 50%;
+  /* top: 50%; */
+  top: 29px;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
@@ -73,7 +88,7 @@
 .formInputs {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  /* gap: 14px; */
 }
 
 .formMultiInput {
@@ -86,14 +101,14 @@
 }
 
 .bookingButton {
+  width: 160px;
   height: 56px;
-  width: 173px;
   padding: 16px 60px;
   color: var(--white-color);
   border-radius: 200px;
   background-color: var(--button-color);
   margin-top: 24px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px; */
 }
 
 .yupAlert {

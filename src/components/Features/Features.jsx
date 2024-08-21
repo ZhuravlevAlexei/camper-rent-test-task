@@ -22,10 +22,14 @@ const Features = ({ camper }) => {
     return form;
   };
 
-  const getText = (feature) => {
+  const getText = (value, feature) => {
     const equipment = filters.equipment;
     const index = equipment.findIndex((eq) => eq.key === feature);
-    if (index >= 0) return equipment[index].name;
+    if (index >= 0) {
+      return Number(value) === 1
+        ? equipment[index].name
+        : equipment[index].name.toLowerCase();
+    }
     return feature;
   };
 
@@ -44,6 +48,7 @@ const Features = ({ camper }) => {
                 key={key}
                 iconId={getIconId(key)}
                 text={` ${showCorrectValue(camper.details[key])} ${getText(
+                  camper.details[key],
                   key
                 )}`}
                 stroke={correctIconStroke(getIconId(key))}

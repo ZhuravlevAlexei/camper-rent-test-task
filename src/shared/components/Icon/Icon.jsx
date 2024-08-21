@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import css from "./Icon.module.css";
 import { icon } from "../../../icons/index.js";
+import css from "./Icon.module.css";
 
 const Icon = ({ iconId, className, ...props }) => {
   return (

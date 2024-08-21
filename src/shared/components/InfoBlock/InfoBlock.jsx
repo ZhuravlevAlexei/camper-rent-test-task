@@ -7,7 +7,7 @@ const InfoBlock = ({
   stroke = false,
   className,
   iconSize = 20,
-  classNameText,
+  classNameText = "",
 }) => {
   const getIconClass = (stroke, iconSize) => {
     if (iconSize === 32) {
@@ -18,25 +18,18 @@ const InfoBlock = ({
     return css.infoBlockIcon;
   };
 
-  // const getTextClass = (classNameText) => {
-  //   if (classNameText) return classNameText;
-  // };
-
-  // mentor advised this way
-  const getTextClass = (classNameText) => (classNameText ? classNameText : "");
-
   // const getClass = (className) => {
   //   if (className) return className;
   //   return css.infoBlock;
   // };
 
-  // mentor advised this way
+  // mentor advised this variant
   const getClass = (className) => (className ? className : css.infoBlock);
 
   return (
     <div className={getClass(className)}>
       <Icon iconId={iconId} className={getIconClass(stroke, iconSize)} />
-      <span className={getTextClass(classNameText)}>{text}</span>
+      <span className={classNameText}>{text}</span>
     </div>
   );
 };

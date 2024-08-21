@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css"; // data picker default styl
 import "./custom-datepicker.css"; // data picker custom styles
 import css from "./BookVan.module.css";
 import Icon from "../../shared/components/Icon/Icon.jsx";
+import React from "react";
 
 const yupSchema = yup.object().shape({
   name: yup
@@ -29,6 +30,8 @@ const BookVan = () => {
   const {
     register,
     control,
+    setValue,
+    watch,
     handleSubmit,
     reset,
     formState: { errors },
@@ -42,17 +45,26 @@ const BookVan = () => {
     reset();
   };
 
-  const DateInput = ({ value, onClick }) => (
-    <div className="date-input-container" onClick={onClick}>
+  const clearDate = (fieldName) => {
+    setValue(fieldName, null);
+  };
+
+  //!!!
+  const DateInput = React.forwardRef(({ value, onClick }, ref) => (
+    <div onClick={onClick}>
       <input
         readOnly
+        ref={ref}
         className={css.calendarInput}
         placeholder="Booking date"
         value={value}
       />
       <Icon iconId="calendar" className={css.calendarIcon} />
     </div>
-  );
+  ));
+
+  DateInput.displayName = "DateInput";
+  //!!!
 
   const CustomHeader = ({
     date,
@@ -128,16 +140,29 @@ const BookVan = () => {
             defaultValue={null}
             render={({ field }) => (
               <DatePicker
-                // className={css.calendarInput}
                 // placeholderText="Booking date"
                 renderCustomHeader={CustomHeader}
-                customInput={<DateInput />}
+                customInput={
+                  <DateInput
+                    value={field.value}
+                    onClick={field.onChange}
+                    onClear={() => clearDate("selectedDate")}
+                  />
+                }
                 selected={field.value}
                 onChange={(date) => field.onChange(date)}
                 dateFormat="dd/MM/yyyy"
               />
             )}
           />
+
+          {watch("selectedDate") && (
+            <Icon
+              iconId="close-cross"
+              className={css.iconClearSelectedDate}
+              onClick={() => clearDate("selectedDate")}
+            />
+          )}
           {errors.selectedDate && (
             <span className={css.yupAlert}>{errors.selectedDate.message}</span>
           )}
