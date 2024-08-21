@@ -7,12 +7,6 @@ import { correctIconStroke } from "../../service/serviceFuncs.js";
 const Features = ({ camper }) => {
   const filters = useSelector(selectFilters);
   const keys = Object.keys(camper.details);
-  const getText = (feature) => {
-    const equipment = filters.equipment;
-    const index = equipment.findIndex((eq) => eq.key === feature);
-    if (index >= 0) return equipment[index].name;
-    return feature;
-  };
 
   const getIconId = (feature) => {
     const equipment = filters.equipment;
@@ -28,6 +22,18 @@ const Features = ({ camper }) => {
     return form;
   };
 
+  const getText = (feature) => {
+    const equipment = filters.equipment;
+    const index = equipment.findIndex((eq) => eq.key === feature);
+    if (index >= 0) return equipment[index].name;
+    return feature;
+  };
+
+  const showCorrectValue = (value) => {
+    if (Number(value) === 1) return "";
+    return value;
+  };
+
   return (
     <div className={css.featuresContent}>
       <div className={css.featureBlocks}>
@@ -37,7 +43,9 @@ const Features = ({ camper }) => {
               <InfoBlock
                 key={key}
                 iconId={getIconId(key)}
-                text={getText(key)}
+                text={` ${showCorrectValue(camper.details[key])} ${getText(
+                  key
+                )}`}
                 stroke={correctIconStroke(getIconId(key))}
               />
             );

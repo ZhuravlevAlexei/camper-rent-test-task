@@ -18,20 +18,25 @@ const InfoBlock = ({
     return css.infoBlockIcon;
   };
 
-  const getTextClass = (classNameText) => {
-    if (classNameText) return classNameText;
-  };
+  // const getTextClass = (classNameText) => {
+  //   if (classNameText) return classNameText;
+  // };
 
-  const getClass = (className) => {
-    if (className) return className;
-    return css.infoBlock;
-  };
+  // mentor advised this way
+  const getTextClass = (classNameText) => (classNameText ? classNameText : "");
+
+  // const getClass = (className) => {
+  //   if (className) return className;
+  //   return css.infoBlock;
+  // };
+
+  // mentor advised this way
+  const getClass = (className) => (className ? className : css.infoBlock);
 
   return (
     <div className={getClass(className)}>
       <Icon iconId={iconId} className={getIconClass(stroke, iconSize)} />
       <span className={getTextClass(classNameText)}>{text}</span>
-      {/* {text} */}
     </div>
   );
 };

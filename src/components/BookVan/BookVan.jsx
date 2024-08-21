@@ -45,7 +45,7 @@ const BookVan = () => {
   const DateInput = ({ value, onClick }) => (
     <div className="date-input-container" onClick={onClick}>
       <input
-        // readOnly
+        readOnly
         className={css.calendarInput}
         placeholder="Booking date"
         value={value}
