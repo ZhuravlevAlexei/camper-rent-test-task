@@ -29,6 +29,9 @@
     "redux-persist": "^6.0.0",
     "yup": "^1.4.0"
   },
+  "overrides": {
+    "esbuild": "0.28.1"
+  },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
